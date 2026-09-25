@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>theo的小站</title>
+<meta name="description" content="theo 的小站：学习笔记、动漫、音乐、日常碎碎念。">
+<link rel="icon" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="veil"></div>
+<canvas id="sky"></canvas>
+
+<div class="layer-content">
+
+  <div class="progress" id="progress"></div>
+  <div class="nav-wrap">
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        <span class="brand-avatar" title="theo"></span>theo的小站
+      </a>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <div class="px-nav">
+          <a href="index.html" data-nav="index">首页</a>
+          <a href="study.html" data-nav="study">学习</a>
+          <a href="anime.html" data-nav="anime">动漫</a>
+          <a href="music.html" data-nav="music">音乐</a>
+          <a href="games.html" data-nav="games">游戏</a>
+          <a href="diary.html" data-nav="diary">日记</a>
+          <a href="about.html" data-nav="about">关于</a>
+        </div>
+        <button class="theme-btn" id="theme-btn">星夜</button>
+      </div>
+    </nav>
+  </div>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="hero-avatar" title="theo"></div>
+      <div class="card hero-card">
+        <h1>theo的小站</h1>
+        <div class="typing" id="typing"></div>
+        <p style="margin:10px 0 18px;color:var(--ink2)">放着我在学的东西、在看的番、在听的歌，还有突然想记下来的瞬间。随便逛，就当来我房间坐一会儿。</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-pink" href="anime.html">在看的番</a>
+          <a class="btn btn-violet" href="music.html">在听的歌</a>
+          <a class="btn btn-ghost" href="study.html">学习模块</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-head reveal"><h2 style="margin:0">学习区</h2><a class="tiny" href="study.html">完整学习模块 →</a></div>
+    <section class="card reveal" style="padding:24px">
+      <div class="grid g2">
+
+        <!-- 打卡：首页直接打 -->
+        <div class="ck-block" id="home-checkin">
+          <h3 style="margin-bottom:6px">今天打了没</h3>
+          <p class="tiny ck-word" style="margin:0 0 12px">点一下，把今天也记下来。</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+            <button class="btn btn-pink ck-btn">打卡今天</button>
+            <span class="tiny">最近 30 天</span>
+          </div>
+          <div class="segs ck-segs"></div>
+          <div class="stats">
+            <div class="stat"><b class="ck-streak">0</b><span>连续天数</span></div>
+            <div class="stat"><b class="ck-total">0</b><span>累计打卡</span></div>
+            <div class="stat"><b class="ck-longest">0</b><span>最长纪录</span></div>
+          </div>
+        </div>
+
+        <!-- 各科状态 -->
+        <div>
+          <h3 style="margin-bottom:10px">各科现在在干嘛</h3>
+          <div id="home-subjects"></div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:18px">
+        <h3 style="margin-bottom:10px">最近的计划感想</h3>
+        <div id="home-plans"></div>
+        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-sm btn-violet" href="study.html#plans">写一条感想 →</a>
+          <a class="btn btn-sm btn-ghost" href="study.html#plans">看我的计划文件 →</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid g2" style="margin-top:18px">
+      <a class="card module reveal" href="study.html">
+        <div class="m-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>学习</h3>
+        <p style="margin:0 0 10px;color:var(--ink2);font-size:14.5px">笔记、打卡、踩过的坑。学习只是这儿的一个模块，但我一直在更。</p>
+        <span class="go">去看看 →</span>
+      </a>
+      <a class="card module m-anime reveal" href="anime.html">
+        <div class="m-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        </div>
+        <h3>动漫</h3>
+        <p style="margin:0 0 10px;color:var(--ink2);font-size:14.5px">追番记录和短评。有看哭的，也有笑到捶桌的。</p>
+        <span class="go">去看看 →</span>
+      </a>
+      <a class="card module m-music reveal" href="music.html">
+        <div class="m-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </div>
+        <h3>音乐</h3>
+        <p style="margin:0 0 10px;color:var(--ink2);font-size:14.5px">循环歌单，一句话安利。动漫歌和日语歌偏多。</p>
+        <span class="go">去听听 →</span>
+      </a>
+      <a class="card module m-game reveal" href="games.html">
+        <div class="m-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="12" rx="4"/><path d="M7 11v4"/><path d="M5 13h4"/><circle cx="16" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="18.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <h3>游戏</h3>
+        <p style="margin:0 0 10px;color:var(--ink2);font-size:14.5px">在玩的、打通的、坑着的。写了成就和真体验。</p>
+        <span class="go">去看看 →</span>
+      </a>
+      <a class="card module m-diary reveal" href="diary.html">
+        <div class="m-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3>日记</h3>
+        <p style="margin:0 0 10px;color:var(--ink2);font-size:14.5px">碎碎念。不一定是大事情，吃到一碗好吃的面也值得记一笔。</p>
+        <span class="go">去看看 →</span>
+      </a>
+    </div>
+
+    <div class="grid g3" style="margin-top:18px">
+      <section class="card reveal">
+        <h3>最近在学</h3>
+        <div id="home-notes"></div>
+        <div style="margin-top:12px"><a class="btn btn-sm btn-ghost" href="study.html">学习模块 →</a></div>
+      </section>
+      <section class="card reveal">
+        <h3>最近在看</h3>
+        <div id="home-anime"></div>
+        <div style="margin-top:12px"><a class="btn btn-sm btn-ghost" href="anime.html">全部追番 →</a></div>
+      </section>
+      <section class="card reveal">
+        <h3>最近在听</h3>
+        <div id="home-music"></div>
+        <div style="margin-top:12px"><a class="btn btn-sm btn-ghost" href="music.html">完整歌单 →</a></div>
+      </section>
+      <section class="card reveal">
+        <h3>最近在玩</h3>
+        <div id="home-games"></div>
+        <div style="margin-top:12px"><a class="btn btn-sm btn-ghost" href="games.html">全部游戏 →</a></div>
+      </section>
+    </div>
+
+    <div class="section-head reveal"><h2 style="margin:0">小站大事记</h2></div>
+    <section class="card reveal">
+      <div class="timeline" id="home-events"></div>
+    </section>
+
+  </main>
+
+  <footer class="site-foot">
+    <div>theo的小站 · 已运行 <b id="foot-days">1</b> 天 · 手写 HTML / CSS / JS</div>
+  </footer>
+
+</div>
+
+<script src="assets/js/vendor/gsap.min.js"></script>
+<script src="assets/js/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/sky.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

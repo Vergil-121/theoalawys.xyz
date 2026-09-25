@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>学习 · theo的小站</title>
+<link rel="icon" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="veil"></div>
+<canvas id="sky"></canvas>
+
+<div class="layer-content">
+
+  <div class="progress" id="progress"></div>
+  <div class="nav-wrap">
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        <span class="brand-avatar" title="theo"></span>theo的小站
+      </a>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <div class="px-nav">
+          <a href="index.html" data-nav="index">首页</a>
+          <a href="study.html" data-nav="study">学习</a>
+          <a href="anime.html" data-nav="anime">动漫</a>
+          <a href="music.html" data-nav="music">音乐</a>
+          <a href="games.html" data-nav="games">游戏</a>
+          <a href="diary.html" data-nav="diary">日记</a>
+          <a href="about.html" data-nav="about">关于</a>
+        </div>
+        <button class="theme-btn" id="theme-btn">星夜</button>
+      </div>
+    </nav>
+  </div>
+
+  <main class="wrap">
+    <section class="card reveal" style="padding:24px;margin-top:26px">
+      <h1>学习</h1>
+      <p style="margin:0;color:var(--ink2)">这里只占一个模块的位置，但东西是真的：打卡、<a href="#subjects">各科进度</a>、<a href="#plans">计划感想</a>、笔记，还有给同学的经验帖。</p>
+    </section>
+
+    <section class="card reveal ck-block" id="checkin" style="margin-top:18px">
+      <h2 style="margin-bottom:6px">学习打卡</h2>
+      <p style="margin:0 0 12px;color:var(--ink2);font-size:14.5px" class="ck-word" id="ck-word">点一下，把今天也记下来。</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <button class="btn btn-pink ck-btn" id="ck-btn">打卡今天</button>
+        <span class="tiny">最近 30 天（悬停看日期）</span>
+      </div>
+      <div class="segs ck-segs" id="ck-segs"></div>
+      <div class="stats">
+        <div class="stat"><b class="ck-streak" id="ck-streak">0</b><span>连续天数</span></div>
+        <div class="stat"><b class="ck-total" id="ck-total">0</b><span>累计打卡</span></div>
+        <div class="stat"><b class="ck-longest" id="ck-longest">0</b><span>最长纪录</span></div>
+      </div>
+    </section>
+
+    <section class="card reveal" style="margin-top:18px;padding:24px" id="subjects">
+      <h2>各科现在在干嘛</h2>
+      <p style="margin:0 0 16px;color:var(--ink2);font-size:14.5px">五科现在的状态，随时改。绿色在往前推，橙色是还没打通的。</p>
+      <div class="grid g2" id="subject-list"></div>
+    </section>
+
+    <section class="card reveal" style="margin-top:18px;padding:24px" id="plans">
+      <h2>计划感想</h2>
+      <p style="margin:0 0 16px;color:var(--ink2);font-size:14.5px">排计划的心得，和踩过的坑。想到就加一条。</p>
+      <div id="plan-list"></div>
+
+      <h2 style="margin-top:26px">我的计划文件</h2>
+      <p class="tiny" style="margin:0 0 12px">点「在线预览」直接在页面里翻，点「下载」存到本地打印。</p>
+      <div id="file-list"></div>
+      <div class="pdf-tabs" id="pdf-tabs"></div>
+      <div class="pdf-view" id="pdf-view">
+        <div class="pdf-bar">
+          <button class="btn btn-sm btn-ghost" id="pp-prev">上一页</button>
+          <span class="tiny" id="pp-num">—</span>
+          <button class="btn btn-sm btn-ghost" id="pp-next">下一页</button>
+          <button class="btn btn-sm btn-ghost" id="pp-big">放大</button>
+          <button class="btn btn-sm btn-ghost" id="pp-small">缩小</button>
+        </div>
+        <div class="pdf-stage"><canvas id="pdf-canvas"></canvas></div>
+      </div>
+      <p class="pdf-hint" id="pdf-hint" style="display:none">手机上如果看不到预览，点「下载」用自带的 PDF 阅读器打开就行。</p>
+
+      <h2 style="margin-top:26px">写一条感想</h2>
+      <form id="refl-form">
+        <div class="field" style="display:flex;gap:12px;flex-wrap:wrap">
+          <div style="flex:1 1 200px">
+            <label class="lb">标题</label>
+            <input class="inp" id="r-title" type="text" placeholder="比如：数学套题刷完一轮之后">
+          </div>
+          <div style="flex:0 0 140px">
+            <label class="lb">分类</label>
+            <select class="inp" id="r-cat">
+              <option>计划</option>
+              <option>感想</option>
+              <option>复盘</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label class="lb">内容</label>
+          <textarea class="ta" id="r-text" style="min-height:90px" placeholder="写写这周的计划执行情况、哪里卡住了、下次怎么改…"></textarea>
+        </div>
+        <button class="btn btn-teal" type="submit">记下来</button>
+        <span id="refl-ok" class="tiny" style="display:none;margin-left:10px">已经加到上面的列表里了</span>
+      </form>
+    </section>
+
+    <section class="card reveal" style="margin-top:18px;padding:24px">
+      <h2>学习笔记</h2>
+      <div class="field">
+        <input class="inp" id="note-search" type="search" placeholder="搜索标题、正文或标签…">
+      </div>
+      <div id="note-tags"></div>
+      <p class="tiny" style="margin:8px 0 0">共 <b id="note-count">0</b> 篇</p>
+    </section>
+
+    <section class="card reveal" style="margin-top:18px;padding:8px 24px">
+      <div id="notes-list"></div>
+    </section>
+
+    <section class="card reveal" style="margin-top:18px;padding:8px 24px">
+      <h2 style="margin-top:16px">经验交流</h2>
+      <div id="exp-list"></div>
+      <h2 style="margin-top:20px">我投稿的经验（<span id="my-count">0</span>）</h2>
+      <div id="my-posts"></div>
+    </section>
+
+    <section class="card reveal" style="margin-top:18px;padding:24px">
+      <h2>写一篇投稿</h2>
+      <form id="post-form">
+        <div class="field">
+          <label class="lb">标题</label>
+          <input class="inp" id="p-title" type="text" placeholder="比如：我是怎么复习期末的">
+        </div>
+        <div class="field" style="display:flex;gap:12px;flex-wrap:wrap">
+          <div style="flex:1 1 180px">
+            <label class="lb">署名</label>
+            <input class="inp" id="p-author" type="text" placeholder="匿名同学">
+          </div>
+          <div style="flex:1 1 180px">
+            <label class="lb">分类</label>
+            <select class="inp" id="p-cat">
+              <option>备考</option>
+              <option>方法</option>
+              <option>心态</option>
+              <option>资源</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label class="lb">一句话摘要</label>
+          <input class="inp" id="p-summary" type="text" placeholder="让人一眼知道你在讲什么">
+        </div>
+        <div class="field">
+          <label class="lb">正文（换行分段）</label>
+          <textarea class="ta" id="p-body" placeholder="把你的方法、步骤、踩过的坑写下来…"></textarea>
+        </div>
+        <button class="btn btn-pink" type="submit">发布投稿</button>
+        <span id="post-ok" class="tiny" style="display:none;margin-left:10px">已发布，就在上面的「我投稿的经验」里</span>
+      </form>
+    </section>
+
+    <section class="card reveal" style="margin-top:18px;padding:24px">
+      <h2>数据备份</h2>
+      <p class="tiny" style="margin:0 0 14px">纯静态站，投稿、评论和打卡都存在你当前浏览器本地。换设备或清缓存前记得导出。</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn btn-violet btn-sm" id="export-btn">导出 JSON</button>
+        <button class="btn btn-ghost btn-sm" id="import-btn">导入备份</button>
+        <input type="file" id="import-file" accept="application/json" style="display:none">
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div>theo的小站 · 已运行 <b id="foot-days">1</b> 天 · 手写 HTML / CSS / JS</div>
+  </footer>
+
+</div>
+
+<script src="assets/js/vendor/pdf/pdf.min.js"></script>
+<script src="assets/js/vendor/gsap.min.js"></script>
+<script src="assets/js/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/sky.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

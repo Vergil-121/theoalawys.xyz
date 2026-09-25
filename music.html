@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>音乐 · theo的小站</title>
+<link rel="icon" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="veil"></div>
+<canvas id="sky"></canvas>
+
+<div class="layer-content">
+
+  <div class="progress" id="progress"></div>
+  <div class="nav-wrap">
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        <span class="brand-avatar" title="theo"></span>theo的小站
+      </a>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <div class="px-nav">
+          <a href="index.html" data-nav="index">首页</a>
+          <a href="study.html" data-nav="study">学习</a>
+          <a href="anime.html" data-nav="anime">动漫</a>
+          <a href="music.html" data-nav="music">音乐</a>
+          <a href="games.html" data-nav="games">游戏</a>
+          <a href="diary.html" data-nav="diary">日记</a>
+          <a href="about.html" data-nav="about">关于</a>
+        </div>
+        <button class="theme-btn" id="theme-btn">星夜</button>
+      </div>
+    </nav>
+  </div>
+
+  <main class="wrap">
+    <section class="card reveal" style="padding:24px;margin-top:26px">
+      <h1>音乐</h1>
+      <p style="margin:0;color:var(--ink2)">正在循环的歌单，每首都附一句安利理由。</p>
+    </section>
+
+    <section class="card reveal player" id="player" style="margin-top:18px">
+      <div class="album" id="np-album"></div>
+      <div style="flex:1 1 240px;min-width:0">
+        <h3 style="margin-bottom:2px"><span id="np-title">—</span> <span class="tag" id="np-mode">无声演示</span></h3>
+        <div class="tiny" id="np-artist" style="margin-bottom:8px">—</div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-sm btn-ghost" id="prev-btn">上一首</button>
+          <button class="btn btn-sm btn-pink" id="play-btn">播放</button>
+          <button class="btn btn-sm btn-ghost" id="next-btn">下一首</button>
+          <span class="eq"><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="p-time"><span id="np-cur">0:00</span> / <span id="np-total">0:00</span></span>
+          <input id="vol" type="range" min="0" max="1" step="0.05" value="0.9" title="音量" style="width:90px">
+        </div>
+        <div class="bar" id="np-bar" style="margin-top:10px;cursor:pointer"><i id="np-bar-i" style="width:0%"></i></div>
+        <p class="tiny" id="np-line" style="margin:10px 0 0">—</p>
+      </div>
+    </section>
+
+    <section class="card reveal" style="margin-top:18px;padding:8px 24px">
+      <h2 style="margin-top:16px">歌单</h2>
+      <div class="tag-row" id="music-genres"></div>
+      <div id="music-list"></div>
+      <p class="tiny" style="margin:14px 0 16px">灰色的是还没接音频的，只走进度条不出声。把歌导进下面的「本地音乐」之后，同名的歌会自动亮起来，变成真能听的。</p>
+    </section>
+
+    <section class="card reveal" style="margin-top:18px;padding:24px">
+      <h2>本地音乐</h2>
+      <p class="tiny" style="margin:0 0 12px">从你电脑里选 MP3 导进来就能真放。文件名对得上歌单里的歌会自动接上（比如「爱爱爱.mp3」会点亮《爱爱爱》），对不上的单独列在下面也能听。文件只存在这个浏览器里，不会上传到任何地方。</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <button class="btn btn-teal" id="import-music">导入本地 MP3</button>
+        <input type="file" id="music-file" accept="audio/*,.mp3,.m4a,.flac,.wav,.ogg" multiple style="display:none">
+        <span class="tiny" id="local-count">还没导入</span>
+      </div>
+      <div id="local-list" style="margin-top:12px"></div>
+    </section>
+  </main>
+
+  <audio id="audio" preload="metadata"></audio>
+
+  <footer class="site-foot">
+    <div>theo的小站 · 已运行 <b id="foot-days">1</b> 天 · 手写 HTML / CSS / JS</div>
+  </footer>
+
+</div>
+
+<script src="assets/js/vendor/gsap.min.js"></script>
+<script src="assets/js/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/sky.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>动漫 · theo的小站</title>
+<link rel="icon" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="veil"></div>
+<canvas id="sky"></canvas>
+
+<div class="layer-content">
+
+  <div class="progress" id="progress"></div>
+  <div class="nav-wrap">
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        <span class="brand-avatar" title="theo"></span>theo的小站
+      </a>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <div class="px-nav">
+          <a href="index.html" data-nav="index">首页</a>
+          <a href="study.html" data-nav="study">学习</a>
+          <a href="anime.html" data-nav="anime">动漫</a>
+          <a href="music.html" data-nav="music">音乐</a>
+          <a href="games.html" data-nav="games">游戏</a>
+          <a href="diary.html" data-nav="diary">日记</a>
+          <a href="about.html" data-nav="about">关于</a>
+        </div>
+        <button class="theme-btn" id="theme-btn">星夜</button>
+      </div>
+    </nav>
+  </div>
+
+  <main class="wrap">
+    <section class="card reveal" style="padding:24px;margin-top:26px">
+      <h1>动漫</h1>
+      <p style="margin:0;color:var(--ink2)">追番记录和短评，五星只给真正击中我的。评级很主观，欢迎反驳。</p>
+    </section>
+
+    <div class="grid g2" style="margin-top:18px">
+      <section class="card reveal" style="padding:8px 24px">
+        <h2 style="margin-top:16px">看过 &amp; 在追</h2>
+        <div id="anime-list"></div>
+      </section>
+
+      <section class="card reveal">
+        <h2>关于看番</h2>
+        <p style="color:var(--ink2);font-size:14.5px">比起一口气补完，我更喜欢在想看的时候慢慢看。有些番适合深夜一个人看，有些适合和朋友一起笑。</p>
+        <hr class="hr">
+        <h3>本命番 TOP3</h3>
+        <div class="timeline">
+          <div class="tl-item"><div class="px">NO.1</div><div>你的名字。——把"错过"拍成了最美的样子</div></div>
+          <div class="tl-item"><div class="px">NO.2</div><div>死神 BLEACH——追更新追了整个学生时代</div></div>
+          <div class="tl-item"><div class="px">NO.3</div><div>紫罗兰永恒花园——教会我怎么好好说话</div></div>
+        </div>
+        <hr class="hr">
+        <p class="tiny" style="margin:0">封面图来自 AniList，压到 480px 宽，手机上加载也快。</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div>theo的小站 · 已运行 <b id="foot-days">1</b> 天 · 手写 HTML / CSS / JS</div>
+  </footer>
+
+</div>
+
+<script src="assets/js/vendor/gsap.min.js"></script>
+<script src="assets/js/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/sky.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
